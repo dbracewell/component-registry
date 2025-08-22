@@ -6,9 +6,9 @@ const COMPONENT_START = "() => {";
 
 export async function GET(
    _req: NextRequest,
-   { params }: { params: { name: string } }
+   { params }: { params: Promise<{ name: string }> }
 ) {
-   const { name } = params;
+   const { name } = await params;
    const filePath = path.join(process.cwd(), "examples", name, "index.tsx");
    console.log(filePath);
    const fileContents = (await fs.readFile(filePath, "utf-8")).trim();
