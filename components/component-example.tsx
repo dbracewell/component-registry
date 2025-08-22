@@ -13,11 +13,13 @@ export const ComponentExample = ({
    description,
    name,
    children,
+   code,
    className,
 }: {
    title: string;
    description: string;
    name: string;
+   code: string;
    children: React.ReactNode;
    className?: string;
 }) => {
@@ -62,7 +64,7 @@ export const ComponentExample = ({
                      {children}
                   </div>
                ) : (
-                  <CodePreview componentName={name} />
+                  <CodePreview code={code} />
                )}
             </div>
          </div>

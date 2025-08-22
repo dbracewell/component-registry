@@ -1,17 +1,10 @@
 "use client";
 import { Button } from "@/registry/new-york/ui/button";
 import Link from "next/link";
-// This page displays items from the custom registry.
-// You are free to implement this with your own design as needed.
+import components from "@/data/components.json";
 
 export default function Home() {
-   const components = [
-      "number-input",
-      "loading-button",
-      "data-table",
-      "form-controls",
-      "confirmation-button",
-   ].sort();
+   components.sort();
 
    return (
       <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">

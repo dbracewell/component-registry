@@ -1,0 +1,1 @@
+{"code":"\n   const [isLoading, setIsLoading] = useState(false);\n   return (\n      <LoadingButton\n         isLoading={isLoading}\n         onClick={() => setIsLoading((prev) => !prev)}\n      >\n         Click Me\n      </LoadingButton>\n   );"}

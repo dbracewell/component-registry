@@ -16,7 +16,7 @@
     "checkbox",
     "calendar",
     "popover",
-    "http://localhost:3000/r/number-input.json"
+    "https://component-registry-delta.vercel.app/r/number-input.json"
   ],
   "files": [
     {

@@ -1,0 +1,1 @@
+{"code":"\n   const action = async () => {\n      \"use server\";\n      await new Promise((resolve) => setTimeout(resolve, 1000));\n   };\n\n   return (\n      <div>\n         <ConfirmationButton action={action}>\n            <Trash2Icon className=\"mr-1\" />\n            Delete\n         </ConfirmationButton>\n      </div>\n   );"}
