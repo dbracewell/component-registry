@@ -24,7 +24,7 @@
          "registryDependencies": [
             "button",
             "alert-dialog",
-            "http://localhost:3000/r/loading-button.json"
+            "https://component-registry-delta.vercel.app/r/loading-button.json"
          ],
          "files": [
             {
@@ -129,7 +129,7 @@
             "checkbox",
             "calendar",
             "popover",
-            "http://localhost:3000/r/number-input.json"
+            "https://component-registry-delta.vercel.app/r/number-input.json"
          ],
          "files": [
             {
