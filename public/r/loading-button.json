@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "loading-button",
+  "type": "registry:component",
+  "title": "Loading Button",
+  "description": "A button that switches to a spinner when loading",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/loading-button/loading-button.tsx",
+      "content": "import { cn } from \"@/lib/utils\";\nimport { Button } from \"@/registry/new-york/ui/button\";\nimport { Loader2Icon } from \"lucide-react\";\nimport React from \"react\";\n\ntype LoadingButtonProps = React.ComponentProps<typeof Button> & {\n   isLoading: boolean;\n};\n\nexport const LoadingButton = ({\n   className,\n   variant,\n   size,\n   asChild = false,\n   isLoading,\n   children,\n   ...props\n}: LoadingButtonProps) => {\n   return (\n      <Button\n         variant={variant}\n         size={size}\n         asChild={asChild}\n         className={cn(\n            \"grid grid-cols-1 items-center justify-items-center\",\n            className\n         )}\n         {...props}\n      >\n         <div\n            className={cn(\n               \"col-start-1 col-end-1 row-start-1 row-end-1\",\n               isLoading ? \"invisible\" : \"visible\",\n               className\n            )}\n         >\n            {children}\n         </div>\n         <div\n            className={cn(\n               \"col-start-1 col-end-1 row-start-1 row-end-1\",\n               isLoading ? \"visible\" : \"invisible\"\n            )}\n         >\n            <Loader2Icon className=\"animate-spin\" />\n         </div>\n      </Button>\n   );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

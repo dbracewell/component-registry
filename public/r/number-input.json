@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-input",
+  "type": "registry:component",
+  "title": "Number Input",
+  "description": "A simple number input component that supports min/max values",
+  "registryDependencies": [
+    "input"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/number-input/number-input.tsx",
+      "content": "import { Input } from \"@/registry/new-york/ui/input\";\nimport React, { ChangeEvent } from \"react\";\n\nexport const NumberInput = ({\n   className,\n   value,\n   onChange,\n   min,\n   max,\n   ...props\n}: Omit<\n   React.ComponentProps<typeof Input>,\n   \"type\" | \"onChange\" | \"value\" | \"min\" | \"max\"\n> & {\n   value: number | null | undefined;\n   onChange: (value: number | null) => void;\n   min?: number | null;\n   max?: number | null;\n}) => {\n   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {\n      const numberValue = e.target.valueAsNumber;\n      if (isFinite(numberValue)) {\n         let returnValue = numberValue;\n         if (min != null && numberValue <= min) returnValue = min;\n         if (max != null && numberValue >= max) returnValue = max;\n         onChange?.(returnValue);\n      } else {\n         onChange?.(null);\n      }\n   };\n\n   return (\n      <Input\n         type=\"number\"\n         {...props}\n         value={value ?? \"\"}\n         onChange={handleOnChange}\n         className={className}\n      />\n   );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,80 +1,173 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "acme",
-  "homepage": "https://acme.com",
-  "items": [
-    {
-      "name": "hello-world",
-      "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "example-form",
-      "type": "registry:component",
-      "title": "Example Form",
-      "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/example-form/example-form.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "complex-component",
-      "type": "registry:component",
-      "title": "Complex Component",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-image.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
-      "name": "example-with-css",
-      "type": "registry:component",
-      "title": "Example with CSS",
-      "description": "A login form with a CSS file.",
-      "files": [
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.css",
-          "type": "registry:component"
-        }
-      ]
-    }
-  ]
+   "$schema": "https://ui.shadcn.com/schema/registry.json",
+   "name": "acme",
+   "homepage": "https://acme.com",
+   "items": [
+      {
+         "name": "number-input",
+         "type": "registry:component",
+         "title": "Number Input",
+         "description": "A simple number input component that supports min/max values",
+         "registryDependencies": ["input"],
+         "files": [
+            {
+               "path": "registry/new-york/number-input/number-input.tsx",
+               "type": "registry:ui"
+            }
+         ]
+      },
+      {
+         "name": "confirmation-button",
+         "type": "registry:component",
+         "title": "Confirmation Button",
+         "description": "A button that confirms whether or not the user wants to perform an operation",
+         "registryDependencies": [
+            "button",
+            "alert-dialog",
+            "http://localhost:3000/r/loading-button.json"
+         ],
+         "files": [
+            {
+               "path": "registry/new-york/confirmation-button/confirmation-button.tsx",
+               "type": "registry:ui"
+            }
+         ]
+      },
+      {
+         "name": "loading-button",
+         "type": "registry:component",
+         "title": "Loading Button",
+         "description": "A button that switches to a spinner when loading",
+         "dependencies": [
+            "lucide-react",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority"
+         ],
+         "registryDependencies": ["button"],
+         "files": [
+            {
+               "path": "registry/new-york/loading-button/loading-button.tsx",
+               "type": "registry:ui"
+            }
+         ]
+      },
+      {
+         "name": "data-table",
+         "type": "registry:component",
+         "title": "Data Table",
+         "description": "A reusable data table component that allows for grouping, footers, and secondary rows",
+         "dependencies": [
+            "lucide-react",
+            "clsx",
+            "tailwind-merge",
+            "class-variance-authority"
+         ],
+         "files": [
+            {
+               "path": "registry/new-york/data-table/data-table-body-row.tsx",
+               "type": "registry:component",
+               "target": "components/data-table/data-table-body-row.tsx"
+            },
+            {
+               "path": "registry/new-york/data-table/data-table-header.tsx",
+               "type": "registry:component",
+               "target": "components/data-table/data-table-header.tsx"
+            },
+            {
+               "path": "registry/new-york/data-table/data-table-body.tsx",
+               "type": "registry:component",
+               "target": "components/data-table/data-table-body.tsx"
+            },
+            {
+               "path": "registry/new-york/data-table/use-data-table.tsx",
+               "type": "registry:hook"
+            },
+            {
+               "path": "registry/new-york/data-table/use-data.ts",
+               "type": "registry:hook"
+            },
+            {
+               "path": "registry/new-york/data-table/use-filters.ts",
+               "type": "registry:hook"
+            },
+            {
+               "path": "registry/new-york/data-table/use-sorting.ts",
+               "type": "registry:hook"
+            },
+            {
+               "path": "registry/new-york/data-table/data-table-utils.ts",
+               "type": "registry:lib"
+            },
+            {
+               "path": "registry/new-york/data-table/text-utils.ts",
+               "type": "registry:lib"
+            },
+            {
+               "path": "registry/new-york/data-table/type-utils.ts",
+               "type": "registry:lib"
+            },
+            {
+               "path": "registry/new-york/data-table/data-table-types.d.ts",
+               "type": "registry:component",
+               "target": "components/data-table/data-table-types.d.ts"
+            }
+         ]
+      },
+      {
+         "name": "form-controls",
+         "type": "registry:component",
+         "title": "Form Controls",
+         "description": "A reusable set of ready made form fields for shadcn form component",
+         "dependencies": ["lucide-react"],
+         "registryDependencies": [
+            "form",
+            "input",
+            "textarea",
+            "select",
+            "label",
+            "checkbox",
+            "calendar",
+            "popover",
+            "http://localhost:3000/r/number-input.json"
+         ],
+         "files": [
+            {
+               "path": "registry/new-york/form-controls/input-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/input-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/select-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/select-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/date-picker-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/date-picker-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/checkbox-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/checkbox-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/textarea-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/textarea-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/number-input-form-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/number-input-form-field.tsx"
+            },
+            {
+               "path": "registry/new-york/form-controls/required-field.tsx",
+               "type": "registry:component",
+               "target": "components/form-controls/required-field.tsx"
+            }
+         ]
+      }
+   ]
 }

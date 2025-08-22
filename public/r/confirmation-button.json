@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confirmation-button",
+  "type": "registry:component",
+  "title": "Confirmation Button",
+  "description": "A button that confirms whether or not the user wants to perform an operation",
+  "registryDependencies": [
+    "button",
+    "alert-dialog",
+    "http://localhost:3000/r/loading-button.json"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/confirmation-button/confirmation-button.tsx",
+      "content": "\"use client\";\nimport { LoadingButton } from \"@/registry/new-york/loading-button/loading-button\";\nimport {\n   AlertDialog,\n   AlertDialogCancel,\n   AlertDialogContent,\n   AlertDialogDescription,\n   AlertDialogFooter,\n   AlertDialogHeader,\n   AlertDialogTitle,\n   AlertDialogTrigger,\n} from \"@/registry/new-york/ui/alert-dialog\";\nimport { Button } from \"@/registry/new-york/ui/button\";\nimport React, { useState, useTransition } from \"react\";\n\ntype ConfirmationButtonProps = React.ComponentProps<typeof Button> & {\n   action: () => Promise<void>;\n   confirmButtonText?: string;\n   cancelButtonText?: string;\n   confirmTitle?: string;\n   confirmDescription?: string;\n};\n\nexport const ConfirmationButton = ({\n   action,\n   confirmButtonText = \"Confirm\",\n   cancelButtonText = \"Cancel\",\n   confirmDescription = \"This action cannot be undone\",\n   confirmTitle = \"Are you sure you want to perform this operation?\",\n   ...props\n}: ConfirmationButtonProps) => {\n   const [isLoading, startTransition] = useTransition();\n   const [isOpen, setIsOpen] = useState(false);\n\n   function performAction() {\n      startTransition(async () => {\n         await action();\n         setIsOpen(false);\n      });\n   }\n\n   return (\n      <AlertDialog open={isOpen} onOpenChange={setIsOpen}>\n         <AlertDialogTrigger asChild>\n            <Button\n               {...props}\n               variant={props.variant ? props.variant : \"destructive\"}\n            >\n               {props.children ? props.children : confirmButtonText}\n            </Button>\n         </AlertDialogTrigger>\n         <AlertDialogContent>\n            <AlertDialogHeader>\n               <AlertDialogTitle>{confirmTitle}</AlertDialogTitle>\n               <AlertDialogDescription>\n                  {confirmDescription ?? \"\"}\n               </AlertDialogDescription>\n            </AlertDialogHeader>\n            <AlertDialogFooter>\n               <AlertDialogCancel>{cancelButtonText}</AlertDialogCancel>\n               <LoadingButton\n                  isLoading={isLoading}\n                  {...props}\n                  variant={props.variant ? props.variant : \"destructive\"}\n                  onClick={performAction}\n               >\n                  {confirmButtonText}\n               </LoadingButton>\n            </AlertDialogFooter>\n         </AlertDialogContent>\n      </AlertDialog>\n   );\n};\n",
+      "type": "registry:ui"
+    }
+  ]
+}
